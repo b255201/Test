@@ -83,9 +83,47 @@
                         { "data": "LastName" },
                         { "data": "FirstName"},
                         { "data": "HomePhone"},
-                        { "data": "LastName" }
+                        { "data": "EmployeeID" }
                     ],
                     "createdRow": function (row, data, index) {
+                        var key = data.EmployeeID;
+                        // 處理姓
+                        var $LastName = $("<input type='text' class='form-control' disabled='disabled' />");
+                        $LastName.attr("id", "LastName_" + key);
+                        $LastName.attr("value", data.LastName);
+                        $("td", row).eq(0).text("").append($LastName);
+
+                        // 處理名子
+                        var $FirstName = $("<input type='text' class='form-control' disabled='disabled' />");
+                        $FirstName.attr("id", "FirstName_" + key);
+                        $FirstName.attr("value", data.FirstName);
+                        $("td", row).eq(1).text("").append($FirstName);
+                        // 處理名子
+                        var $HomePhone = $("<input type='text' class='form-control' disabled='disabled' />");
+                        $HomePhone.attr("id", "HomePhone_" + key);
+                        $HomePhone.attr("value", data.HomePhone);
+                        $("td", row).eq(2).text("").append($HomePhone);
+
+                        // 處理 Button
+                        var $edit = $("<input type='button' value='修改' class='btn btn-primary' />");
+                        $edit.attr("id", "btnEdit_" + key);
+                        $edit.attr("onclick", "onEdit('" + key + "')");
+
+                        var $delete = $("<input type='button' value='刪除' class='btn btn-danger' />");
+                        $delete.attr("id", "btnDelete_" + key);
+                        $delete.attr("onclick", "onDelete('" + key + "')");
+
+                        var $save = $("<input type='button' value='儲存' class='btn btn-primary' style='display: none;' />");
+                        $save.attr("id", "btnSave_" + key);
+                        $save.attr("onclick", "onSave('" + key + "')");
+
+                        var $exit = $("<input type='button' value='離開' class='btn btn-dark' style='display: none;' />");
+                        $exit.attr("id", "btnBack_" + key);
+                        $exit.attr("onclick", "onBack('" + key + "')");
+
+                        var $space1 = $("<span>&nbsp;</span>");
+                        var $space2 = $("<span>&nbsp;</span>");
+                        $("td", row).eq(3).text("").append($edit).append($space1).append($delete).append($save).append($space2).append($exit);
                     },
                     "language": {
                         "info": "目前第 _START_ - _END_ 筆 ／ 共計 _TOTAL_ 筆",
@@ -101,6 +139,26 @@
                         }
                     }
                 })
+            }
+
+            function toggleButton(toQuery, id) {
+                if (toQuery) {
+                    $("#btnEdit_" + id).show();
+                    $("#btnEdit_" + id).next().show();
+                    $("#btnDelete_" + id).show();
+
+                    $("#btnSave_" + id).hide();
+                    $("#btnSave_" + id).next().hide();
+                    $("#btnBack_" + id).hide();
+                } else {
+                    $("#btnEdit_" + id).hide();
+                    $("#btnEdit_" + id).next().hide();
+                    $("#btnDelete_" + id).hide();
+
+                    $("#btnSave_" + id).show();
+                    $("#btnSave_" + id).next().show();
+                    $("#btnBack_" + id).show();
+                }
             }
 
 
