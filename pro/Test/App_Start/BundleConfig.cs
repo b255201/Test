@@ -26,6 +26,17 @@ namespace Test
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            // jquery datatable
+            bundles.Add(new StyleBundle("~/Content/css/datatables").Include(
+                      "~/Content/DataTables/css/jquery.dataTables.css",
+                      "~/Content/DataTables/css/dataTables.tableTools.css",
+                      "~/Content/DataTables/css/dataTables.responsive.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/datatables").Include(
+                      "~/Scripts/DataTables/jquery.dataTables.js",
+                      "~/Scripts/DataTables/dataTables.tableTools.js",
+                      "~/Scripts/DataTables/dataTables.responsive.js"));
         }
     }
 }

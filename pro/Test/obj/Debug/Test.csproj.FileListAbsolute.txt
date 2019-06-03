@@ -148,3 +148,4 @@ C:\Users\Administrator\Desktop\Test\pro\Test\obj\Debug\Test.dll
 C:\Users\Administrator\Desktop\Test\pro\Test\obj\Debug\Test.pdb
 C:\Users\Administrator\Desktop\Test\pro\Test\bin\Library.dll
 C:\Users\Administrator\Desktop\Test\pro\Test\bin\Library.pdb
+C:\Users\Administrator\Desktop\Test\pro\Test\bin\System.Linq.Dynamic.dll
